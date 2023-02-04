@@ -1,8 +1,9 @@
 # cs639
-
-p {
+<style>
+  p {
   padding-right: 150px;
-}
+  }
+</style>
 
 <p float="left">
   <img src="MyFirstApp/first_fragment_start.png" width="300" height="400">
