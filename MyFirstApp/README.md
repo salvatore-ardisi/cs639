@@ -1,4 +1,4 @@
-# cs639
+# My First App
 
 <p float="left">
   <img src="first_fragment_start.png" width="300" height="400" hspace="20">
