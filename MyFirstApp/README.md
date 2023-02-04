@@ -1,6 +1,7 @@
 # My First App
 
-In this codelab, I learned how to build and run my first Android app in the Java.
+In this codelab, I learned how to build and run my first Android app in the Java. <br />
+
 Specifically,
 - How to use Android Studio
 - How to run an app on a device and emulator
