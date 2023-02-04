@@ -1,5 +1,6 @@
 # cs639
-p.left {
+
+p {
   padding-right: 150px;
 }
 
