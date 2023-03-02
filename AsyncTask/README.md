@@ -7,11 +7,6 @@ Specifically,
 - The drawbacks of using AsyncTask for background tasks.<br />
 
 <p float="left">
-  <img src="" width="300" height="400" hspace="20">
-  <img src="" width="300" height="400" hspace="20">
-</p>
-<br />
-<p float="left">
-  <img src="" width="300" height="400" hspace="20">
-  <img src="" width="300" height="400" hspace="20">
+  <img src="async_task_main" width="300" height="400" hspace="20">
+  <img src="async_task_click" width="300" height="400" hspace="20">
 </p>
