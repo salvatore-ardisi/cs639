@@ -18,5 +18,5 @@ Specifically,
 </p>
 <br />
 <p float="left">
-  <img src="hello_toast_app_icon.png" width="500" height="400" hspace="20">
+  <img src="hello_toast_app_icon.png" width="300" height="400" hspace="20">
 </p>
