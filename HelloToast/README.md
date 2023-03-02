@@ -16,3 +16,7 @@ Specifically,
   <img src="hello_toast_toast_button_press.png" width="520" height="400" hspace="20"><br />
   <img src="hello_toast_portrait.png" width="400" height="400" hspace="20">
 </p>
+<br />
+<p float="left">
+  <img src="hello_toast_app_icon.png" width="500" height="400" hspace="20">
+</p>
