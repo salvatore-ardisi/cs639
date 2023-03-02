@@ -1,6 +1,6 @@
 # Hello Toast
 
-In this codelab, I learned how to build and run my first Android app in the Java. <br />
+In this codelab, I learned about the UI of an Android device and views. <br />
 
 Specifically,
 - How to create an app with interactive behavior.
