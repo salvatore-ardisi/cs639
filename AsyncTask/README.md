@@ -8,7 +8,7 @@ This app has one TextView and one Button. When the user clicks the Button, the a
 - The drawbacks of using AsyncTask for background tasks.<br />
 
 <p float="left">
-  <img src="async_task_main" width="300" height="400" hspace="20">
-  <img src="async_task_napping" width="300" height="400" hspace="20">
-  <img src="async_task_completed" width="300" height="400" hspace="20">
+  <img src="async_task_main.png" width="300" height="400" hspace="20">
+  <img src="async_task_napping.png" width="300" height="400" hspace="20">
+  <img src="async_task_completed.png" width="300" height="400" hspace="20">
 </p>
