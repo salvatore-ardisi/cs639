@@ -1,4 +1,4 @@
-# Async Task
+# AsyncTaskImageDownloader
 
 In this codelab, I learned how to add a background task to my Android app using an AsyncTask.<br />
 
