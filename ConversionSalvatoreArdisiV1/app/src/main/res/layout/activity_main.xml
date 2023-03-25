@@ -11,63 +11,97 @@
         android:id="@+id/miles_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Miles"
+        android:layout_marginTop="24dp"
+        android:text="@string/miles"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/miles_input" />
 
     <TextView
-        android:id="@+id/miles_view"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="24dp"
+        android:id="@+id/miles_output"
+        android:layout_width="115dp"
+        android:layout_height="109dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="27dp"
         android:gravity="center"
-        android:textSize="24sp"
-        android:text="1"
+        android:text="TODO"
+        app:layout_constraintBottom_toTopOf="@+id/km_mi_img"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/miles_button" />
 
-    <ImageView
-        android:id="@+id/km_mi_img"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/km_mi_img"
-        app:layout_constraintBottom_toTopOf="@+id/name_img"
+    <EditText
+        android:id="@+id/miles_input"
+        android:layout_width="121dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="8dp"
+        android:hint="@string/enter_miles"
+        android:inputType="numberDecimal"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/miles_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/miles_view" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.058" />
 
     <ImageView
-        android:id="@+id/name_img"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:src="@drawable/name"
-        app:layout_constraintBottom_toTopOf="@+id/kilometers_view"
+        android:id="@+id/km_mi_img"
+        android:layout_width="83dp"
+        android:layout_height="62dp"
+        android:src="@drawable/km_mi_img"
+        app:layout_constraintBottom_toTopOf="@+id/ki_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/miles_output" />
+
+    <EditText
+        android:id="@+id/ki_input"
+        android:layout_width="90dp"
+        android:layout_height="83dp"
+        android:layout_marginTop="9dp"
+        android:hint="@string/enter_kilometers"
+        android:gravity="center"
+        android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/km_mi_img" />
 
     <TextView
-        android:id="@+id/kilometers_view"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="24dp"
+        android:id="@+id/km_output"
+        android:layout_width="137dp"
+        android:layout_height="93dp"
+        android:layout_marginTop="26dp"
         android:gravity="center"
-        android:textSize="24sp"
-        android:text="1.60934"
-        app:layout_constraintBottom_toTopOf="@+id/kilometer_button"
+        android:text="TODO"
+        app:layout_constraintBottom_toTopOf="@+id/name_img"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kilometer_button" />
+
+    <ImageView
+        android:id="@+id/name_img"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.475"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/km_output" />
 
     <Button
         android:id="@+id/kilometer_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Kilometers"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="8dp"
+        android:text="@string/kilometers"
+        app:layout_constraintBottom_toTopOf="@+id/km_output"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ki_input"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
