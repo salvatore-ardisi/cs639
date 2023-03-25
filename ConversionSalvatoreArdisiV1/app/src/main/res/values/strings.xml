@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">My Application</string>
-    <string name="miles">Miles</string>
+    <string name="miles">Convert to km.</string>
     <string name="enter_miles">Enter mi.</string>
     <string name="enter_kilometers">Enter km.</string>
-    <string name="kilometers">Kilometers</string>
+    <string name="kilometers">Convert to mi.</string>
 </resources>
