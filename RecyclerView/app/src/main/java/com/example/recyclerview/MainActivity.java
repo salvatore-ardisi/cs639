@@ -1,76 +1,101 @@
 package com.example.recyclerview;
 
 import android.os.Bundle;
-
-import com.google.android.material.snackbar.Snackbar;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.view.View;
-
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import com.example.recyclerview.databinding.ActivityMainBinding;
-
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-    private AppBarConfiguration appBarConfiguration;
-    private ActivityMainBinding binding;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+import java.util.LinkedList;
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+/**
+ * Implements a basic RecyclerView that displays a list of generated words.
+ * - Clicking an item marks it as clicked.
+ * - Clicking the fab button adds a new word to the list.
+ */
+public class MainActivity extends AppCompatActivity
+{
 
-        setSupportActionBar(binding.toolbar);
+   private final LinkedList<String> mWordList = new LinkedList<>();
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+   private RecyclerView mRecyclerView;
+   private WordListAdapter mAdapter;
 
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-    }
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      setContentView(R.layout.activity_main);
+      Toolbar toolbar = findViewById(R.id.toolbar);
+      setSupportActionBar(toolbar);
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
+      FloatingActionButton fab = findViewById(R.id.fab);
+      fab.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View view) {
+            int wordListSize = mWordList.size();
+            // Add a new word to the wordList.
+            mWordList.addLast("+ Word " + wordListSize);
+            // Notify the adapter, that the data has changed.
+            mRecyclerView.getAdapter().notifyItemInserted(wordListSize);
+            // Scroll to the bottom.
+            mRecyclerView.smoothScrollToPosition(wordListSize);
+         }
+      });
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+      // Put initial data into the word list.
+      for (int i = 0; i < 20; i++) {
+         mWordList.addLast("Word " + i);
+      }
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+      // Create recycler view.
+      mRecyclerView = findViewById(R.id.recyclerview);
+      // Create an adapter and supply the data to be displayed.
+      mAdapter = new WordListAdapter(this, mWordList);
+      // Connect the adapter with the recycler view.
+      mRecyclerView.setAdapter(mAdapter);
+      // Give the recycler view a default layout manager.
+      mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+   }
 
-        return super.onOptionsItemSelected(item);
-    }
+   /**
+    * Inflates the menu, and adds items to the action bar if it is present.
+    *
+    * @param menu Menu to inflate.
+    * @return Returns true if the menu inflated.
+    */
+   @Override
+   public boolean onCreateOptionsMenu(Menu menu) {
+      // Inflate the menu; this adds items to the action bar if it is present.
+      getMenuInflater().inflate(R.menu.menu_main, menu);
+      return true;
+   }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
-    }
+   /**
+    * Handles app bar item clicks.
+    *
+    * @param item Item clicked.
+    * @return True if one of the defined items was clicked.
+    */
+   @Override
+   public boolean onOptionsItemSelected(MenuItem item) {
+      // Handle action bar item clicks here. The action bar will
+      // automatically handle clicks on the Home/Up button, so long
+      // as you specify a parent activity in AndroidManifest.xml.
+      int id = item.getItemId();
+
+      // This comment suppresses the Android Studio warning about simplifying
+      // the return statements.
+      //noinspection SimplifiableIfStatement
+      if (id == R.id.action_settings) {
+         return true;
+      }
+
+      return super.onOptionsItemSelected(item);
+   }
 }
