@@ -36,8 +36,8 @@ import com.google.firebase.storage.ktx.storage
 // The FirebaseRecyclerAdapter class and options come from the FirebaseUI library
 // See: https://github.com/firebase/FirebaseUI-Android
 class FriendlyMessageAdapter(
-    private val options: FirebaseRecyclerOptions<FriendlyMessage>,
-    private val currentUserName: String?
+        private val options: FirebaseRecyclerOptions<FriendlyMessage>,
+        private val currentUserName: String?
 ) : FirebaseRecyclerAdapter<FriendlyMessage, ViewHolder>(options) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -67,7 +67,15 @@ class FriendlyMessageAdapter(
 
     inner class MessageViewHolder(private val binding: MessageBinding) : ViewHolder(binding.root) {
         fun bind(item: FriendlyMessage) {
-            // TODO: implement
+            binding.messageTextView.text = item.text
+            setTextColor(item.name, binding.messageTextView)
+
+            binding.messengerTextView.text = item.name ?: ANONYMOUS
+            if (item.photoUrl != null) {
+                loadImageIntoView(binding.messengerImageView, item.photoUrl)
+            } else {
+                binding.messengerImageView.setImageResource(R.drawable.ic_account_circle_black_36dp)
+            }
         }
 
         private fun setTextColor(userName: String?, textView: TextView) {
@@ -82,9 +90,16 @@ class FriendlyMessageAdapter(
     }
 
     inner class ImageMessageViewHolder(private val binding: ImageMessageBinding) :
-        ViewHolder(binding.root) {
+            ViewHolder(binding.root) {
         fun bind(item: FriendlyMessage) {
-            // TODO: implement
+            loadImageIntoView(binding.messageImageView, item.imageUrl!!, false)
+
+            binding.messengerTextView.text = item.name ?: ANONYMOUS
+            if (item.photoUrl != null) {
+                loadImageIntoView(binding.messengerImageView, item.photoUrl)
+            } else {
+                binding.messengerImageView.setImageResource(R.drawable.ic_account_circle_black_36dp)
+            }
         }
     }
 
@@ -92,17 +107,17 @@ class FriendlyMessageAdapter(
         if (url.startsWith("gs://")) {
             val storageReference = Firebase.storage.getReferenceFromUrl(url)
             storageReference.downloadUrl
-                .addOnSuccessListener { uri ->
-                    val downloadUrl = uri.toString()
-                    loadWithGlide(view, downloadUrl, isCircular)
-                }
-                .addOnFailureListener { e ->
-                    Log.w(
-                        TAG,
-                        "Getting download url was not successful.",
-                        e
-                    )
-                }
+                    .addOnSuccessListener { uri ->
+                        val downloadUrl = uri.toString()
+                        loadWithGlide(view, downloadUrl, isCircular)
+                    }
+                    .addOnFailureListener { e ->
+                        Log.w(
+                                TAG,
+                                "Getting download url was not successful.",
+                                e
+                        )
+                    }
         } else {
             loadWithGlide(view, url, isCircular)
         }
