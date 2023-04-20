@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">BusinessCard</string>
+    <string name="name">Salvatore</string>
+    <string name="title">Java</string>
+    <string name="number">555–555–5555</string>
+    <string name="website">website</string>
+    <string name="email">email</string>
 </resources>
